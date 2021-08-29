@@ -17,7 +17,7 @@ md="6"
 
   
      
-<v-toolbar color="" dark flat>
+<v-toolbar color="blue"  flat>
 <v-toolbar-title class="white--text">Login form</v-toolbar-title>
 </v-toolbar>
 <v-card-text>
@@ -40,7 +40,7 @@ md="6"
     ></v-text-field>
 
   
-    <v-btn color="blue" :loading="loading"  @click="login">Login</v-btn>
+    <v-btn color="primary" dark :loading="loading"  @click="login">Login</v-btn>
 
   </v-form>
 </v-card-text>

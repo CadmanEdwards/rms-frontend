@@ -101,7 +101,12 @@ export default {
         {
           icon: 'mdi-chart-bubble',
           title: 'User',
-          to: '/User'
+          to: '/users'
+        }, 
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Roles & Permissions',
+          to: '/roles_permissions'
         }
       ],
       miniVariant: false,
