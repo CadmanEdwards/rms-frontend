@@ -2,9 +2,12 @@
 <v-app>
    
 <v-main>
+
 <v-container
 class="fill-height"
 >
+
+
 <v-row
 justify="center"
 >
@@ -13,13 +16,24 @@ cols="12"
 sm="8"
 md="6"
 >
-<v-card class="elevation-12">
 
+<v-card  class=" elevation-12">
+
+  <v-toolbar flat class="info" dark justify="center">
+   
+    <v-row justify="center" class="">
+    <v-col align="center">
+      <h2>Login to Dashboard</h2>
+    </v-col>
+</v-row>
+  </v-toolbar>
+
+<v-row justify="center" class="mt-5">
+    <v-col align="center">
+      <NuxtLogo />
+    </v-col>
+</v-row>
   
-     
-<v-toolbar color="blue"  flat>
-<v-toolbar-title class="white--text">Login form</v-toolbar-title>
-</v-toolbar>
 <v-card-text>
    <v-form
     method="post"

@@ -17,7 +17,7 @@
         <v-spacer></v-spacer>
         <v-dialog
           v-model="dialog"
-          max-width="500px"
+          max-width="800px"
         >
           <template v-slot:activator="{ on, attrs }">
             <v-btn
@@ -43,71 +43,66 @@
                   <v-col
                     cols="12"
                     sm="12"
-                    md="12"
+                    md="6"
                   >
                     <v-text-field
-                      v-model="editedItem.role"
-                      :label="labels.role"
+                      v-model="editedItem.name"
+                      :label="labels.name"
                     ></v-text-field>
                   </v-col>
 
                    <v-col
                     cols="12"
                     sm="12"
-                    md="12"
+                    md="6"
                   >
                     <v-text-field
-                      v-model="editedItem.role_slug"
-                      :label="labels.role_slug"
+                    type="email"
+                      v-model="editedItem.email"
+                      :label="labels.email"
                     ></v-text-field>
                   </v-col>
 
                   <v-col
                     cols="12"
                     sm="12"
+                    md="6"
+                  >
+                    <v-text-field
+                    type="password"
+                      v-model="editedItem.password"
+                      :label="labels.password"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    sm="12"
+                    md="6"
+                  >
+                    <v-text-field
+                    type="password"
+                      v-model="editedItem.password_confirmation"
+                      :label="labels.password_confirmation"
+                    ></v-text-field>
+                  </v-col>
+
+                
+
+                  <v-col
+                    cols="12"
+                    sm="12"
                     md="12"
                   >
-                   <v-row>
-                     <v-col cols="2"> 
 
-
-                      <v-checkbox
-                    dense
-                    v-model="editedItem.permissions"
-                    label="Add"
-                    value= 'add'
-                    ></v-checkbox>
-
-                    </v-col>
-                    <v-col cols="2">
-                    <v-checkbox
-                    dense
-                    v-model="editedItem.permissions"
-                    label="Edit"
-                    value= 'edit'
-                    ></v-checkbox>
-                    </v-col>
-
-                    <v-col cols="2">
-                    <v-checkbox
-                    dense
-                    v-model="editedItem.permissions"
-                    label="View"
-                    value= 'view'
-                    ></v-checkbox>
-                    </v-col>
-
-                    <v-col cols="2">
-                    <v-checkbox
-                    dense
-                    v-model="editedItem.permissions"
-                    label="Delete"
-                    value= 'delete'
-                    ></v-checkbox>
-                    </v-col>
-                   </v-row>
-
-                    
+                  <v-autocomplete
+                  label="Select Role"
+                  v-model="editedItem.role_id"
+                  :items="roles"
+                  item-text="role"
+                  item-value="id"
+                  >
+                  </v-autocomplete>
+                  
                   </v-col>
 
                   <v-col>
@@ -161,21 +156,24 @@
       </v-toolbar>
     </template>
 
-     <template v-slot:item.permissions="{ item }">
+     <template v-slot:item.role="{ item }">
      
-       <v-chip class="ma-1 primary" v-for="(item,index) in item.permissions" :key="index">
+       <v-chip v-if="item.role && item.role.role" class="ma-1 primary">
 
-         {{item.permission}}
+         {{item.role.role}}
 
        </v-chip>
+
+       <v-chip v-else dark>No Role</v-chip>
      </template>
     
 
- <template v-slot:item.actions="{ item }">
+    <template v-slot:item.actions="{ item }">
      
       <v-btn mall text class="info--text" @click="editItem(item)">
         <v-icon
         x-small
+        class="mr-2"
        >
         mdi-pencil
       </v-icon>
@@ -208,34 +206,43 @@
 
       dialog: false,
       dialogDelete: false,
-      Entity : 'Role',
-      model : 'role',
+      Entity : 'User',
+      model : 'user',
 
       labels : {
-        role : 'Role',
-        role_slug : 'Slug',
+        name : 'Name',
+        email : 'Email',
+        password : 'Password',
+        password_confirmation : 'Password Confirmation',
+        role_id : 'Select Role'
+
       },
 
       headers: [
        
+        { text: 'Name', value: 'name' },
+        { text: 'Email', value: 'email' },
         { text: 'Role', value: 'role' },
-        { text: 'Slug', value: 'role_slug' },
-        { text: 'Permissions', value: 'permissions' },
         { text: 'Actions', value: 'actions', sortable: false },
       ],
       data: [],
+      roles : [],
       errors : [],
       editedIndex: -1,
       
       editedItem: {
-        role: '',
-        role_slug: '',
-        permissions : [],
+        name : '',
+        email : '',
+        password : '',
+        password_confirmation : '',
+        role_id : 0
       },
       defaultItem: {
-        role: '',
-        role_slug: '',
-        permissions : [],
+        name : '',
+        email : '',
+        password : '',
+        password_confirmation : '',
+        role_id : 0
       },
     }),
 
@@ -264,6 +271,8 @@
       initialize () {
 
         this.$axios.get(`/${this.model}`).then(res => this.data = res.data);
+        this.$axios.get(`/role`).then(res => this.roles = res.data);
+
 
       },
 
@@ -272,10 +281,6 @@
 
         this.editedIndex = this.data.indexOf(item)
         this.editedItem = Object.assign({}, item)
-
-        let arr = item.permissions.map((e) => e.permission)
-        this.editedItem.permissions = arr
-       
         this.dialog = true
       },
 
@@ -292,6 +297,11 @@
             .then(res => {
               this.data.splice(this.editedIndex, 1)
               this.closeDelete()
+                 this.$swal.fire(
+                    res.data.message,
+                    '',
+                    'error'
+                    )
             });
 
 
@@ -314,6 +324,7 @@
         })
       },
 
+     
       save () {
         if (this.editedIndex > -1) {
           
@@ -326,6 +337,13 @@
                   Object.assign(this.data[this.editedIndex], res.data.payload)
                   this.errors = []
                   this.close()
+                   this.$swal.fire(
+                        res.data.message,
+                        '',
+                        'success'
+                     
+                    )
+                   
                 }
                 else{
                   this.errors = res.data.errors;
@@ -344,6 +362,11 @@
               this.data.push(res.data.payload)
               this.errors = []
               this.close()
+               this.$swal.fire(
+                    res.data.message,
+                    '',
+                    'success'
+                    )
             }
             else{
 
