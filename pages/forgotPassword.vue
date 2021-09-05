@@ -16,8 +16,7 @@
               <v-toolbar flat class="info" dark justify="center">
                 <v-row justify="center" class="">
                   <v-col align="center">
-                    <h2>Login to Dashboard
-                    </h2>
+                    <h2>Forgot Password</h2>
                   </v-col>
                 </v-row>
               </v-toolbar>
@@ -33,33 +32,34 @@
                         lazy-validation
                         >
                   <v-text-field
-                                v-model="credentials.email"
+                                v-model="email"
                                 label="E-mail"
+                                :rules="Rules"
                                 required
                                 >
                   </v-text-field>
-                  <v-text-field
-                                v-model="credentials.password"
-                                label="Password"
-                                required
-                                type="password"
-                                >
-                  </v-text-field>
+               
 
-                  <ul class="mb-3" v-for="(error,index) in errors" :key="index">
-                      <li  class="error--text ">
+                  <div class="mb-3" v-for="(error,index) in errors" :key="index">
+                      <span  class="error--text ">
                           {{error}}
-                      </li>
-                  </ul>
+                      </span>
+                  </div>
+
+                   <div class="mb-3" style="width:350px;" v-for="(message,index) in messages" :key="index">
+                      <span  class="success--text ">
+                          {{message}}
+                      </span>
+                  </div>
 
                   <v-row>
                     <v-col>
-                     <v-btn  color="primary" dark :loading="loading"  @click="login">Login</v-btn>
+                  <v-btn  color="primary"  dark :loading="loading"  @click="login">Submit
+                  </v-btn>
+
                     </v-col>
                     <v-col>
-                  <div class="text-right mt-2">
-                      <NuxtLink to="/forgotPassword">Forgot Password? Click here</NuxtLink>
-                    </div>
+                  <div class="text-right mt-2"><a href="/login">Click here to login</a></div>
 
 
                     </v-col>
@@ -83,33 +83,50 @@
   </v-app>
 </template>
 <script>
-  export default {  
-    layout:'login',
+  export default {
+    auth : false,
+    layout:'guest',
     data:() => ({
+      messages : [],
       errors : [],
       loading:false,  
-      credentials : {
-        email:'',
-        password:'',
-      } 
-    }
-               ),
+      email:'',
+      Rules : [ v => !!v || 'This field is required']
+    }),
     methods:{
     
     login () {
 
+      if(this.$refs.form.validate()){   
+
       this.loading = true
 
       try {
-            this.$auth.loginWith('local',{ data : this.credentials })
-            .catch((e) => { 
-              this.errors = e.response.data.errors
-              this.loading = false
-              })
+            this.$axios.post('reset_password',{email : this.email}) 
+                .then((res) => {
+                  
 
-      } catch (error) {}
+                    if(res.data.status){
+                        this.messages = res.data.message;
+                        this.errors = [];
+                        this.loading = false;
+                    }
+                    else{
+                      this.messages = [];
+                      this.errors = res.data.errors;
+                      this.loading = true;
+                    }
+                });
+        
 
-      setTimeout(() => this.loading = false , 2000)
+      } catch (error) {
+            this.loading = false;
+      }
+
+     setTimeout(() => this.loading = false , 2000);
+
+
+      }
   }
   }
   }
