@@ -1,0 +1,58 @@
+[
+  {
+    "name": "forgotPassword",
+    "path": "/forgotPassword",
+    "component": "C:\\\\Users\\\\felix\\\\Desktop\\\\report-management-system\\\\frontend\\\\pages\\\\forgotPassword.vue",
+    "chunkName": "pages/forgotPassword",
+    "_name": "_81082226"
+  },
+  {
+    "name": "login",
+    "path": "/login",
+    "component": "C:\\\\Users\\\\felix\\\\Desktop\\\\report-management-system\\\\frontend\\\\pages\\\\login.vue",
+    "chunkName": "pages/login",
+    "_name": "_878431ac"
+  },
+  {
+    "name": "resetPassword",
+    "path": "/resetPassword",
+    "component": "C:\\\\Users\\\\felix\\\\Desktop\\\\report-management-system\\\\frontend\\\\pages\\\\resetPassword\\\\index.vue",
+    "chunkName": "pages/resetPassword/index",
+    "_name": "_86b9d252"
+  },
+  {
+    "name": "roles_permissions",
+    "path": "/roles_permissions",
+    "component": "C:\\\\Users\\\\felix\\\\Desktop\\\\report-management-system\\\\frontend\\\\pages\\\\roles_permissions\\\\index.vue",
+    "chunkName": "pages/roles_permissions/index",
+    "_name": "_0aeba75f"
+  },
+  {
+    "name": "users",
+    "path": "/users",
+    "component": "C:\\\\Users\\\\felix\\\\Desktop\\\\report-management-system\\\\frontend\\\\pages\\\\users.vue",
+    "chunkName": "pages/users",
+    "_name": "_38001e49"
+  },
+  {
+    "name": "resetPassword-token",
+    "path": "/resetPassword/:token",
+    "component": "C:\\\\Users\\\\felix\\\\Desktop\\\\report-management-system\\\\frontend\\\\pages\\\\resetPassword\\\\_token.vue",
+    "chunkName": "pages/resetPassword/_token",
+    "_name": "_5d875bc5"
+  },
+  {
+    "name": "roles_permissions-id",
+    "path": "/roles_permissions/:id",
+    "component": "C:\\\\Users\\\\felix\\\\Desktop\\\\report-management-system\\\\frontend\\\\pages\\\\roles_permissions\\\\_id.vue",
+    "chunkName": "pages/roles_permissions/_id",
+    "_name": "_c4ac14f2"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\Users\\\\felix\\\\Desktop\\\\report-management-system\\\\frontend\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_1ad377da"
+  }
+]
