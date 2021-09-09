@@ -14,6 +14,11 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
+    script: [
+      {
+        src: 'https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit'
+      }
+    ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
@@ -74,6 +79,9 @@ export default {
   router: {
     middleware: ['auth']
   },
+
+  // serverMiddleware: ['~middleware/verify.js'],
+
 
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
