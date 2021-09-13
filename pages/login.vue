@@ -8,7 +8,7 @@
               <v-toolbar flat class="info" dark justify="center">
                 <v-row justify="center" class="">
                   <v-col align="center">
-                    <h2>Login to Dashboard</h2>
+                    <h2>Inicie sesión en el panel de control</h2>
                   </v-col>
                 </v-row>
               </v-toolbar>
@@ -20,21 +20,21 @@
               <v-card-text>
                 <v-form method="post" ref="form" lazy-validation>
                   <v-text-field
-                    v-model="credentials.email"
-                    label="E-mail"
+                    v-model="credentials.user"
+                    label="usuario"
                     :rules="EmailRules"
                     required
                   >
                   </v-text-field>
                   <v-text-field
                     v-model="credentials.password"
-                    label="Password"
+                    label="contraseña"
                     required
                     :rules="PasswordRules"
                     type="password"
                   >
                   </v-text-field>
-                  
+
                   <ul
                     class="mb-3"
                     v-for="(error, index) in errors"
@@ -47,8 +47,8 @@
 
                   <v-row>
                     <v-col cols="12">
-                      <vue-recaptcha :sitekey="sitekey" @verify="mxVerify">
-                      </vue-recaptcha>
+                      <!-- <vue-recaptcha :sitekey="sitekey" @verify="mxVerify">
+                      </vue-recaptcha> -->
                       <span
                         v-if="showGRC"
                         class="fade"
@@ -62,14 +62,15 @@
                         dark
                         :loading="loading"
                         @click="login"
-                        >Login</v-btn
+                        >Iniciar sesión</v-btn
                       >
                     </v-col>
                     <v-col>
                       <div class="text-right mt-2">
-                        <NuxtLink to="/forgotPassword">
-                          Forgot Password? Click here
+                        <NuxtLink to="/forgotPassword" class="button--grey">
+                          ¿Olvidó su contraseña? Haga clic aquí
                         </NuxtLink>
+                        
                       </div>
                     </v-col>
                   </v-row>
@@ -87,6 +88,8 @@
 
 <script>
 import VueRecaptcha from "vue-recaptcha";
+import { mapMutations } from 'vuex';
+
 
 export default {
   components: {
@@ -96,9 +99,10 @@ export default {
   layout: "login",
   data: () => ({
     errors: [],
+    transition: "home",
     loading: false,
     credentials: {
-      email: "",
+      user: "",
       password: "",
     },
     sitekey: "6LeZeykaAAAAAILTse8_kZa6-PSKvC7NFaZuOa7l",
@@ -107,7 +111,7 @@ export default {
 
     EmailRules: [
       (v) => !!v || "This field is required",
-      (v) => /.+@.+/.test(v) || "E-mail must be valid",
+      // (v) => /.+@.+/.test(v) || "E-mail must be valid",
     ],
     PasswordRules: [
       (v) => !!v || "This field is required",
@@ -121,8 +125,8 @@ export default {
     },
 
     login() {
-       this.showGRC = this.reCaptcha ? false : true;
-      if (this.$refs.form.validate() && this.reCaptcha) {
+      //  this.showGRC = this.reCaptcha ? false : true;
+      if (this.$refs.form.validate()) {
         try {
          
 
@@ -133,8 +137,16 @@ export default {
             })
             .catch((e) => {
               this.errors = e.response.data.errors;
+              if(e.response.data.device_registration){
+                
+                this.$store.commit('setUser', this.credentials.user)
+
+                this.$router.push('/device_registration');
+              }
               this.loading = false;
             });
+
+            
         } catch (error) {}
       }
 
@@ -158,4 +170,5 @@ export default {
                 opacity: 1;
             }
         }
+
     </style>
