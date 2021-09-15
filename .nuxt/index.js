@@ -13,14 +13,14 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_728bb3cc from 'nuxt_plugin_plugin_728bb3cc' // Source: .\\components\\plugin.js (mode: 'all')
-import nuxt_plugin_plugin_b0ea47cc from 'nuxt_plugin_plugin_b0ea47cc' // Source: .\\vuetify\\plugin.js (mode: 'all')
-import nuxt_plugin_srcplugin29c3fe66_d27ca468 from 'nuxt_plugin_srcplugin29c3fe66_d27ca468' // Source: .\\src.plugin.29c3fe66.js (mode: 'client')
-import nuxt_plugin_workbox_91a0e9ce from 'nuxt_plugin_workbox_91a0e9ce' // Source: .\\workbox.js (mode: 'client')
-import nuxt_plugin_metaplugin_480e5699 from 'nuxt_plugin_metaplugin_480e5699' // Source: .\\pwa\\meta.plugin.js (mode: 'all')
-import nuxt_plugin_iconplugin_4cb5fc0d from 'nuxt_plugin_iconplugin_4cb5fc0d' // Source: .\\pwa\\icon.plugin.js (mode: 'all')
-import nuxt_plugin_axios_ad931d86 from 'nuxt_plugin_axios_ad931d86' // Source: .\\axios.js (mode: 'all')
-import nuxt_plugin_auth_0ea8c75a from 'nuxt_plugin_auth_0ea8c75a' // Source: .\\auth.js (mode: 'all')
+import nuxt_plugin_plugin_e56e2588 from 'nuxt_plugin_plugin_e56e2588' // Source: .\\components\\plugin.js (mode: 'all')
+import nuxt_plugin_plugin_3d878f90 from 'nuxt_plugin_plugin_3d878f90' // Source: .\\vuetify\\plugin.js (mode: 'all')
+import nuxt_plugin_srcplugin5713bc2a_035d6820 from 'nuxt_plugin_srcplugin5713bc2a_035d6820' // Source: .\\src.plugin.5713bc2a.js (mode: 'client')
+import nuxt_plugin_workbox_0957168a from 'nuxt_plugin_workbox_0957168a' // Source: .\\workbox.js (mode: 'client')
+import nuxt_plugin_metaplugin_44887e3b from 'nuxt_plugin_metaplugin_44887e3b' // Source: .\\pwa\\meta.plugin.js (mode: 'all')
+import nuxt_plugin_iconplugin_493023af from 'nuxt_plugin_iconplugin_493023af' // Source: .\\pwa\\icon.plugin.js (mode: 'all')
+import nuxt_plugin_axios_c1254942 from 'nuxt_plugin_axios_c1254942' // Source: .\\axios.js (mode: 'all')
+import nuxt_plugin_auth_f684341e from 'nuxt_plugin_auth_f684341e' // Source: .\\auth.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -88,7 +88,7 @@ async function createApp(ssrContext, config = {}) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"titleTemplate":"%s - frontend","title":"frontend","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":""},{"name":"format-detection","content":"telephone=no"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:100,300,400,500,700,900&display=swap"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fcdn.jsdelivr.net\u002Fnpm\u002F@mdi\u002Ffont@latest\u002Fcss\u002Fmaterialdesignicons.min.css"}],"style":[],"script":[]},
+    head: {"titleTemplate":"%s - frontend","title":"frontend","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":""},{"name":"format-detection","content":"telephone=no"},{"hid":"charset","charset":"utf-8"},{"hid":"mobile-web-app-capable","name":"mobile-web-app-capable","content":"yes"},{"hid":"apple-mobile-web-app-title","name":"apple-mobile-web-app-title","content":"frontend"},{"hid":"og:type","name":"og:type","property":"og:type","content":"website"},{"hid":"og:title","name":"og:title","property":"og:title","content":"frontend"},{"hid":"og:site_name","name":"og:site_name","property":"og:site_name","content":"frontend"},{"hid":"og:description","name":"og:description","property":"og:description","content":"## Build Setup"}],"script":[{"src":"https:\u002F\u002Fwww.google.com\u002Frecaptcha\u002Fapi.js?onload=vueRecaptchaApiLoaded&render=explicit"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:100,300,400,500,700,900&display=swap"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fcdn.jsdelivr.net\u002Fnpm\u002F@mdi\u002Ffont@latest\u002Fcss\u002Fmaterialdesignicons.min.css"},{"hid":"shortcut-icon","rel":"shortcut icon","href":"\u002F_nuxt\u002Ficons\u002Ficon_64x64.e3e9fb.png"},{"hid":"apple-touch-icon","rel":"apple-touch-icon","href":"\u002F_nuxt\u002Ficons\u002Ficon_512x512.e3e9fb.png","sizes":"512x512"},{"rel":"manifest","href":"\u002F_nuxt\u002Fmanifest.cb2a7f5b.json","hid":"manifest"}],"style":[],"htmlAttrs":{"lang":"en"}},
 
     store,
     router,
@@ -217,36 +217,36 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_728bb3cc === 'function') {
-    await nuxt_plugin_plugin_728bb3cc(app.context, inject)
+  if (typeof nuxt_plugin_plugin_e56e2588 === 'function') {
+    await nuxt_plugin_plugin_e56e2588(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_plugin_b0ea47cc === 'function') {
-    await nuxt_plugin_plugin_b0ea47cc(app.context, inject)
+  if (typeof nuxt_plugin_plugin_3d878f90 === 'function') {
+    await nuxt_plugin_plugin_3d878f90(app.context, inject)
   }
 
-  if (process.client && typeof nuxt_plugin_srcplugin29c3fe66_d27ca468 === 'function') {
-    await nuxt_plugin_srcplugin29c3fe66_d27ca468(app.context, inject)
+  if (process.client && typeof nuxt_plugin_srcplugin5713bc2a_035d6820 === 'function') {
+    await nuxt_plugin_srcplugin5713bc2a_035d6820(app.context, inject)
   }
 
-  if (process.client && typeof nuxt_plugin_workbox_91a0e9ce === 'function') {
-    await nuxt_plugin_workbox_91a0e9ce(app.context, inject)
+  if (process.client && typeof nuxt_plugin_workbox_0957168a === 'function') {
+    await nuxt_plugin_workbox_0957168a(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_metaplugin_480e5699 === 'function') {
-    await nuxt_plugin_metaplugin_480e5699(app.context, inject)
+  if (typeof nuxt_plugin_metaplugin_44887e3b === 'function') {
+    await nuxt_plugin_metaplugin_44887e3b(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_iconplugin_4cb5fc0d === 'function') {
-    await nuxt_plugin_iconplugin_4cb5fc0d(app.context, inject)
+  if (typeof nuxt_plugin_iconplugin_493023af === 'function') {
+    await nuxt_plugin_iconplugin_493023af(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_ad931d86 === 'function') {
-    await nuxt_plugin_axios_ad931d86(app.context, inject)
+  if (typeof nuxt_plugin_axios_c1254942 === 'function') {
+    await nuxt_plugin_axios_c1254942(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_auth_0ea8c75a === 'function') {
-    await nuxt_plugin_auth_0ea8c75a(app.context, inject)
+  if (typeof nuxt_plugin_auth_f684341e === 'function') {
+    await nuxt_plugin_auth_f684341e(app.context, inject)
   }
 
   // Lock enablePreview in context

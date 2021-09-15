@@ -67,8 +67,8 @@
                     </v-col>
                     <v-col>
                       <div class="text-right mt-2">
-                        <NuxtLink to="/forgotPassword" class="button--grey">
-                          ¿Olvidó su contraseña? Haga clic aquí
+                        <NuxtLink to="/recover_user" class="button--grey">
+                          recuperar usuario
                         </NuxtLink>
                         
                       </div>

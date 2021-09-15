@@ -81,14 +81,14 @@
 
                     <v-col>
 
-                  <v-btn  color="primary"  dark :loading="loading2"  @click="o">Permanente 
+                  <v-btn  color="primary"  dark :loading="loading3"  @click="register_perm">Permanente 
                   </v-btn>
 
                    </v-col>
 
                     <v-col>
 
-                  <v-btn  color="primary"  dark :loading="loading3"  @click="register_perm">Cancelar
+                  <v-btn  color="primary"  dark :loading="loading2"  @click="o">Cancelar
                   </v-btn>
 
                    </v-col>
@@ -132,6 +132,7 @@
       user:  '',
       namemachine:'',
       cod:'',
+      action:'',
       }, 
       Rules : [ v => !!v || 'This field is required'],
     
@@ -142,6 +143,7 @@
     }
     },
     created () {
+
       if(!this.getUser){
           this.$router.push('/');        
       }
@@ -166,13 +168,22 @@
 
                   if(ep == 'register_temp'){
                     this.loading1 = true
+                    this.payload.action = 2
                   }
                   else if(ep == 'o'){
                     this.loading2 = true
+                    this.payload.action = 0
+
                   }
-                  else if(ep == 'register_temp'){
+                  else if(ep == 'register_perm'){
                     this.loading3 = true
+                    this.payload.action = 1
+
                   }
+
+                  
+
+                  
 
       try {
             this.$axios.post(`/${ep}`,this.payload) 
@@ -190,7 +201,7 @@
                           else if(ep == 'o'){
                           this.loading2 = false
                           }
-                          else if(ep == 'register_temp'){
+                          else if(ep == 'register_perm'){
                           this.loading3 = false
                           }
 
@@ -205,7 +216,7 @@
                           else if(ep == 'o'){
                           this.loading2 = false
                           }
-                          else if(ep == 'register_temp'){
+                          else if(ep == 'register_perm'){
                           this.loading3 = false
                           }
                     

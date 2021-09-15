@@ -4,14 +4,17 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _81082226 = () => interopDefault(import('..\\pages\\forgotPassword.vue' /* webpackChunkName: "pages/forgotPassword" */))
-const _878431ac = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages/login" */))
-const _86b9d252 = () => interopDefault(import('..\\pages\\resetPassword\\index.vue' /* webpackChunkName: "pages/resetPassword/index" */))
-const _0aeba75f = () => interopDefault(import('..\\pages\\roles_permissions\\index.vue' /* webpackChunkName: "pages/roles_permissions/index" */))
-const _38001e49 = () => interopDefault(import('..\\pages\\users.vue' /* webpackChunkName: "pages/users" */))
-const _5d875bc5 = () => interopDefault(import('..\\pages\\resetPassword\\_token.vue' /* webpackChunkName: "pages/resetPassword/_token" */))
-const _c4ac14f2 = () => interopDefault(import('..\\pages\\roles_permissions\\_id.vue' /* webpackChunkName: "pages/roles_permissions/_id" */))
-const _1ad377da = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
+const _22045e31 = () => interopDefault(import('..\\pages\\device_registration.vue' /* webpackChunkName: "pages/device_registration" */))
+const _18ffb37f = () => interopDefault(import('..\\pages\\forgotPassword.vue' /* webpackChunkName: "pages/forgotPassword" */))
+const _4e595658 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages/login" */))
+const _5c53b4a7 = () => interopDefault(import('..\\pages\\recover_user.vue' /* webpackChunkName: "pages/recover_user" */))
+const _16c4c2b5 = () => interopDefault(import('..\\pages\\recover_user_code.vue' /* webpackChunkName: "pages/recover_user_code" */))
+const _1891a5e9 = () => interopDefault(import('..\\pages\\resetPassword\\index.vue' /* webpackChunkName: "pages/resetPassword/index" */))
+const _c00f451e = () => interopDefault(import('..\\pages\\roles_permissions\\index.vue' /* webpackChunkName: "pages/roles_permissions/index" */))
+const _6bc8e512 = () => interopDefault(import('..\\pages\\users.vue' /* webpackChunkName: "pages/users" */))
+const _7f6aaef3 = () => interopDefault(import('..\\pages\\resetPassword\\_token.vue' /* webpackChunkName: "pages/resetPassword/_token" */))
+const _8f9defce = () => interopDefault(import('..\\pages\\roles_permissions\\_id.vue' /* webpackChunkName: "pages/roles_permissions/_id" */))
+const _f69c997e = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
 
@@ -25,36 +28,48 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
+    path: "/device_registration",
+    component: _22045e31,
+    name: "device_registration"
+  }, {
     path: "/forgotPassword",
-    component: _81082226,
+    component: _18ffb37f,
     name: "forgotPassword"
   }, {
     path: "/login",
-    component: _878431ac,
+    component: _4e595658,
     name: "login"
   }, {
+    path: "/recover_user",
+    component: _5c53b4a7,
+    name: "recover_user"
+  }, {
+    path: "/recover_user_code",
+    component: _16c4c2b5,
+    name: "recover_user_code"
+  }, {
     path: "/resetPassword",
-    component: _86b9d252,
+    component: _1891a5e9,
     name: "resetPassword"
   }, {
     path: "/roles_permissions",
-    component: _0aeba75f,
+    component: _c00f451e,
     name: "roles_permissions"
   }, {
     path: "/users",
-    component: _38001e49,
+    component: _6bc8e512,
     name: "users"
   }, {
     path: "/resetPassword/:token",
-    component: _5d875bc5,
+    component: _7f6aaef3,
     name: "resetPassword-token"
   }, {
     path: "/roles_permissions/:id",
-    component: _c4ac14f2,
+    component: _8f9defce,
     name: "roles_permissions-id"
   }, {
     path: "/",
-    component: _1ad377da,
+    component: _f69c997e,
     name: "index"
   }],
 
