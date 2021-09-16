@@ -8,7 +8,7 @@
               <v-toolbar flat class="info" dark justify="center">
                 <v-row justify="center" class="">
                   <v-col align="center">
-                    <h2>Olvidé mi contraseña</h2>
+                    <h2>Forgot Password</h2>
                   </v-col>
                 </v-row>
               </v-toolbar>
@@ -21,7 +21,7 @@
                 <v-form method="post" ref="form" lazy-validation>
                   <v-text-field
                     v-model="email"
-                    label="Correo electrónico"
+                    label="Email"
                     :rules="Rules"
                     required
                   >
@@ -55,12 +55,14 @@
                         dark
                         :loading="loading"
                         @click="login"
-                        >Enviar
+                        >Submit
                       </v-btn>
                     </v-col>
                     <v-col>
                       <div class="text-right mt-2">
-                        <a href="/login">Haga clic aquí para iniciar sesión</a>
+                         <NuxtLink to="/login" class="button--grey">
+                            Click here to login
+                        </NuxtLink>
                       </div>
                     </v-col>
                   </v-row>

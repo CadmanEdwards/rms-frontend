@@ -112,7 +112,7 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Admin Panel'
+      title: this.$auth.user.email
     }
   },
   methods:{

@@ -8,7 +8,7 @@
               <v-toolbar flat class="info" dark justify="center">
                 <v-row justify="center" class="">
                   <v-col align="center">
-                    <h2>Inicie sesión en el panel de control</h2>
+                    <h2>Login to Dashboard</h2>
                   </v-col>
                 </v-row>
               </v-toolbar>
@@ -20,15 +20,15 @@
               <v-card-text>
                 <v-form method="post" ref="form" lazy-validation>
                   <v-text-field
-                    v-model="credentials.user"
-                    label="usuario"
+                    v-model="credentials.email"
+                    label="Email"
                     :rules="EmailRules"
                     required
                   >
                   </v-text-field>
                   <v-text-field
                     v-model="credentials.password"
-                    label="contraseña"
+                    label="Password"
                     required
                     :rules="PasswordRules"
                     type="password"
@@ -62,13 +62,13 @@
                         dark
                         :loading="loading"
                         @click="login"
-                        >Iniciar sesión</v-btn
+                        >Submit</v-btn
                       >
                     </v-col>
                     <v-col>
                       <div class="text-right mt-2">
-                        <NuxtLink to="/recover_user" class="button--grey">
-                          recuperar usuario
+                        <NuxtLink to="/forgotPassword" class="button--grey">
+                          forgot password? click here
                         </NuxtLink>
                         
                       </div>
@@ -102,7 +102,7 @@ export default {
     transition: "home",
     loading: false,
     credentials: {
-      user: "",
+      email: "",
       password: "",
     },
     sitekey: "6LeZeykaAAAAAILTse8_kZa6-PSKvC7NFaZuOa7l",
@@ -118,6 +118,7 @@ export default {
       // v => /^[A-Z]+[0-9]+[\$\+@\+]$/.test(v) || 'Password must be strong (hint : A-Z)'
     ],
   }),
+  
   methods: {
     mxVerify(res) {
       this.reCaptcha = res;
@@ -139,9 +140,9 @@ export default {
               this.errors = e.response.data.errors;
               if(e.response.data.device_registration){
                 
-                this.$store.commit('setUser', this.credentials.user)
+                // this.$store.commit('setUser', this.credentials.user)
 
-                this.$router.push('/device_registration');
+                // this.$router.push('/device_registration');
               }
               this.loading = false;
             });

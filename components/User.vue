@@ -21,6 +21,7 @@
         >
           <template v-slot:activator="{ on, attrs }">
             <v-btn
+              v-if="$auth.user.canAdd"
               small
               color="primary"
               dark
@@ -170,7 +171,7 @@
 
     <template v-slot:item.actions="{ item }">
      
-      <v-btn mall text class="info--text" @click="editItem(item)">
+      <v-btn v-if="$auth.user.canEdit" mall text class="info--text" @click="editItem(item)">
         <v-icon
         x-small
         class="mr-2"
@@ -179,7 +180,7 @@
       </v-icon>
       Edit
       </v-btn>
-      <v-btn small text class="error--text"   @click="deleteItem(item)">
+      <v-btn v-if="$auth.user.canDelete" small text class="error--text"   @click="deleteItem(item)">
         <v-icon
         color="error"
         small
@@ -349,7 +350,9 @@
                   this.errors = res.data.errors;
                 }
 
-             });
+             })
+            .catch(e => this.errors = e.response.data.errors);
+            
 
           
         } else {
@@ -376,7 +379,7 @@
         
              
           })
-          .catch(e => console.log(e));
+          .catch(e => this.errors = e.response.data.errors);
 
 
 
